@@ -7,6 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%String message=(String)request.getAttribute("message"); %>
+<%if(message!=null){ %>
+<h1><%=message %></h1>
+<%}else{ %>
+<h1><%="Welcome to Student APplication Please SignUp" %></h1>
+<%} %>
 <form action="signup" method="post">
 Name::<input type="text" name="name">
 <br>

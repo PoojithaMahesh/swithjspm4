@@ -40,15 +40,18 @@ protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws S
 //		then check with the password
 		if(password.equals(studentPassword)) {
 //			login success
+			req.setAttribute("list",list);
 			RequestDispatcher  dispatcher=req.getRequestDispatcher("display.jsp");
 			dispatcher.forward(req, resp);
 		}else {
 //			invalid password
+			req.setAttribute("message", "Invalid Password");
 			RequestDispatcher  dispatcher=req.getRequestDispatcher("login.jsp");
 			dispatcher.include(req, resp);
 		}
 	}else {
 //		email doesnot exist
+		req.setAttribute("message", "Invalid Email");
 		RequestDispatcher  dispatcher=req.getRequestDispatcher("login.jsp");
 		dispatcher.include(req, resp);
 	}

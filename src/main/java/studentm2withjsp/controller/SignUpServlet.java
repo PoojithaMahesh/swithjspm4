@@ -50,10 +50,12 @@ protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws S
 //		value=true  if that email doesnot exist in the database
 //		sign up
 		studentDao.saveStudent(student);
+		req.setAttribute("message", "SignedUp Successfully please Login");
 		RequestDispatcher dispatcher=req.getRequestDispatcher("login.jsp");
 		dispatcher.forward(req, resp);
 	}else {
 //		value=false if that email already exist in the db
+		req.setAttribute("message", "Email already exist!!!!");
 		RequestDispatcher dispatcher=req.getRequestDispatcher("signup.jsp");
 		dispatcher.include(req, resp);
 	}
